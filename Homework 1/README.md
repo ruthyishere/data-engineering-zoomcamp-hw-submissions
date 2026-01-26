@@ -168,13 +168,13 @@ ORDER BY max_trip DESC;
 
 Select the date of the first row
 
-**Answer**: 2024-11-14
+**Answer**: 2025-11-14
 
 ## Answer 5 - Biggest pickup zone
 
 ```
 SELECT
-	tz."Zone", Count(*) AS count
+	tz."Zone", SUM(gtt."total_amount") AS count
 FROM taxi_zones tz 
 LEFT JOIN green_taxi_trips gtt ON tz."LocationID" = gtt."PULocationID"
 WHERE DATE("lpep_pickup_datetime") = '2025-11-18'
