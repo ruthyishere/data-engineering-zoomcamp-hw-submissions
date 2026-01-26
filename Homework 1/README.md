@@ -159,16 +159,16 @@ WHERE extract(month FROM "lpep_pickup_datetime") = 11 AND "trip_distance" <= 1;
 ```
 SELECT 
 	DATE("lpep_pickup_datetime") as pick_up_date,
-	MAX("trip_distance") as max_dist
+	MAX("trip_distance") as max_trip
 FROM green_taxi_trips
 WHERE "trip_distance" < 100
 GROUP BY pick_up_date
-ORDER BY max_dist DESC;
+ORDER BY max_trip DESC;
 ```
 
-Select the date of the first row.
+Select the date of the first row
 
-**Answer**: 2025-11-14
+**Answer**: 2024-11-14
 
 ## Answer 5 - Biggest pickup zone
 
@@ -177,9 +177,7 @@ SELECT
 	tz."Zone", Count(*) AS count
 FROM taxi_zones tz 
 LEFT JOIN green_taxi_trips gtt ON tz."LocationID" = gtt."PULocationID"
-WHERE extract(year FROM "lpep_pickup_datetime") = 2025 AND 
-	extract(month FROM "lpep_pickup_datetime") = 11 AND 
-	extract(day FROM "lpep_pickup_datetime") = 18
+WHERE DATE("lpep_pickup_datetime") = '2025-11-18'
 GROUP BY tz."Zone"
 ORDER BY count DESC;
 ```
