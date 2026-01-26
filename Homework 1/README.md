@@ -184,6 +184,8 @@ ORDER BY count DESC;
 
 Select the Zone of the first row.
 
+**Answer**: East Harlem North
+
 ## Answer 6 - Drop off Zone with largest tip
 
 Get location ID for East Harlem North from taxi zones table
