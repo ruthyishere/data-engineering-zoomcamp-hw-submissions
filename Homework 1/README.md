@@ -158,15 +158,17 @@ WHERE extract(month FROM "lpep_pickup_datetime") = 11 AND "trip_distance" <= 1;
 
 ```
 SELECT 
-	"lpep_pickup_datetime",
-	MAX("trip_distance")
+	DATE("lpep_pickup_datetime") as pick_up_date,
+	MAX("trip_distance") as max_dist
 FROM green_taxi_trips
 WHERE "trip_distance" < 100
-GROUP BY "lpep_pickup_datetime"
-ORDER BY MAX("trip_distance") DESC;
+GROUP BY pick_up_date
+ORDER BY max_dist DESC;
 ```
 
-Select the date of the first row
+Select the date of the first row.
+
+**Answer**: 2025-11-14
 
 ## Answer 5 - Biggest pickup zone
 
